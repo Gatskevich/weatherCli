@@ -12,10 +12,10 @@ const printSuccess = (message) => {
 const printHelp = () => {
 	console.log(
 		dedent`${chalk.bgCyan(' HELP ')}
-		Без параметров - вывод погоды
-		-s [CITY] для установки города
-		-h для вывода помощи
-		-t [API_KEY] для сохранения токена
+		Without param - show weather
+		-s [CITY] for set up city
+		-h for enter help
+		-t [API_KEY] for save token
 		`
 	);
 };
