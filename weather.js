@@ -17,6 +17,21 @@ const saveToken = async (token) => {
 	}
 }
 
+const getForcast = async () => {
+	try {
+		const weather = await getWeather(process.env.CITY);
+		console.log(weather);
+	} catch (e) {
+		if (e?.response?.status == 404) {
+			printError('Invalid city');
+		} else if (e?.response?.status == 401) {
+			printError('Invalid token');
+		} else {
+			printError(e.message);
+		}
+	}
+}
+
 const initCLI = () => {
     const args = getArgs(process.argv);
 
@@ -29,7 +44,7 @@ const initCLI = () => {
 	if (args.t) {
 		return saveToken(args.t);
 	}
-    getWeather('moscow');
+    getForcast();
 };
 
 initCLI();
